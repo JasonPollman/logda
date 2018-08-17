@@ -1,0 +1,69 @@
+{
+  "name": "logda",
+  "version": "1.0.0",
+  "description": "A dependency free logger that works well with AWS Lambda and CloudWatch Logs.",
+  "license": "ISC",
+  "main": "index.js",
+  "keywords": [
+    "log",
+    "logger",
+    "logging",
+    "lambda",
+    "winston",
+    "bunyan",
+    "pino",
+    "debug",
+    "utils",
+    "tools",
+    "stream",
+    "json"
+  ],
+  "author": {
+    "name": "Jason James Pollman",
+    "email": "jasonjpollman@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JasonPollman/logda.git"
+  },
+  "scripts": {
+    "lint": "npx eslint src/** test/**",
+    "test": "NODE_ENV=test jest",
+    "test:cover": "NODE_ENV=test jest --coverage",
+    "build": "rm -rf ./dist && mkdir ./dist && NODE_ENV=production npx babel ./src -d ./dist",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.5.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ],
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 99,
+        "statements": 99,
+        "functions": 99,
+        "branches": 99
+      }
+    }
+  }
+}

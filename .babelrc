@@ -1,0 +1,14 @@
+{
+  "sourceMaps": false,
+  "minified": true,
+  "compact": true,
+  "presets": [
+    "stage-0",
+    [
+      "env",
+      {
+        "node": "6.0.0"
+      }
+    ]
+  ]
+}
