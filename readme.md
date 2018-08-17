@@ -25,8 +25,8 @@ log.debug('User Boz Scaggs logged in...', user);
 #### Why not these other loggers?
 - [debug](https://www.npmjs.com/package/debug)    
   - Lightweight and awesomely simple, but lacks features like settings a level based on environment.
-  - When printing objects using tokens like `%O` output is put on seperate lines and
-    very hard to read!.
+  - When printing objects using tokens like `%O`, output is put on seperate lines and
+    very hard to read!
   - Hey, `%j` works well, but is unreadable in terminal.
 - [winston](https://www.npmjs.com/package/winston)    
   - Way too heavy for lambda.
@@ -149,7 +149,7 @@ log.info('Fruits: %s, %s, %s', 'apples', 'banannas', 'oranges', { /* meta data *
 | `%x`       | Converts the given value to a hex number. |
 
 ## Creating Custom Loggers
-Use the default loggers `create` method to create new instances of the `Logda` class.
+Use the default logger's `create` method to create new instances of the `Logda` class.
 
 ```js
 import fs from 'fs';
@@ -165,13 +165,12 @@ const customLog = log.create({ /* options */ });
 | level                  | `process.env.LOG_LEVEL`          | The logging level. This will only log message types with a corresponding level >= this value. |
 | depth                  | `process.env.LOG_DEPTH`          | The maximum depth when pretty printing and using inspect. This is passed directly to `util.inspect`. |
 | pretty                 | `process.env.LOG_PRETTY`         | True to pretty print log messages. If false, raw JSON will be output. |
-| colorize               | `process.env.LOG_COLORS`         | True to colorize message (if `pretty` is also true). |
+| colorize               | `process.env.LOG_COLORS`         | True to print messages using colors (if `pretty` is also true). |
 | timestampGenerator     | `() => new Date().toISOString()` | A function that defines how timestamps are generated for each log message. |
-| colorize               | `process.env.LOG_COLORS`         | True to colorize message (if `pretty` is also true). |
 | stdout                 | `process.env.LOG_COLORS`         | The stream to log stdout messages to. |
 | srderr                 | `process.env.LOG_COLORS`         | The stream to log stderr messages to. |
-| levels                 | `{ error: 0, warn: 10, ... }`    | A mapping of loggin levels to their "logging level weight". |
-| colors                 | `{ error: 125, warn: 172, ... }` | A mapping of loggin levels to the ansi terminal color code to use when `pretty` and `colorize` are both set. |
+| levels                 | `{ error: 0, warn: 10, ... }`    | A mapping of logging levels to their "logging level weight". |
+| colors                 | `{ error: 125, warn: 172, ... }` | A mapping of logging levels to the ANSI terminal color code to use when `pretty` and `colorize` are both set. |
 
 ### Logging To File
 **You can pass any `Writable` stream to to the `stdout` and `stderr` options.**
@@ -181,12 +180,13 @@ import fs from 'fs';
 import log from 'logda';
 
 const logFileStream = fs.createWriteStream('./logs.log', 'a');
+const errFileStream = fs.createWriteStream('./error.log', 'a');
 
 // Create custom file logger.
 // You can pass any writable stream to `stdout` and `stderr` options.
 const filelog = log.create({
   stdout: logFileStream,
-  stderr: logFileStream,
+  stderr: errFileStream,
 });
 
 filelog.info('Logged to disk!');
