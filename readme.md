@@ -20,7 +20,9 @@ a number of JSON supported logging systems (logstash, datadog, etc.).
 log.info('Hello World');
 log.debug('User Boz Scaggs logged in...', user);
 ```
-![CloudWatch Logs Example](./images/cloudwatch-logs.png)
+
+![CloudWatch Logs Example](https://raw.githubusercontent.com/JasonPollman/logda/master/images/cloudwatch-logs.png)
+
 
 #### Why not these other loggers?
 - [debug](https://www.npmjs.com/package/debug)    
